@@ -39,6 +39,15 @@ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", Gettext package)
 AC_SUBST(GETTEXT_PACKAGE)
 
 dnl ###########################################################################
+dnl Check for GTK version - 3.20
+dnl ###########################################################################
+
+PKG_CHECK_MODULES(GTK_3_20_0, gtk-3.0 >= 3.20.0 , gtk_check_pass=yes, gtk_check_pass=no)
+if test x$gtk_check_pass = xyes ; then
+  AC_DEFINE(HAVE_GTK_3_20_0, 1, [Defined if we have gtk 3.20, which adds gtk_widget_queue_allocate])
+fi
+
+dnl ###########################################################################
 dnl Files to generate
 dnl ###########################################################################
 
